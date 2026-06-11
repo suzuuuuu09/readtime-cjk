@@ -1,0 +1,47 @@
+{
+  "name": "readtime-cjk",
+  "version": "0.1.0",
+  "description": "Reading time estimation for Markdown with better CJK and Obsidian support.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "packageManager": "pnpm@10.34.2",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "readtime",
+    "markdown",
+    "cjk",
+    "japanese",
+    "obsidian"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.7"
+  },
+  "dependencies": {
+    "mdast-util-from-markdown": "^2.0.2",
+    "mdast-util-to-string": "^4.0.0"
+  }
+}
