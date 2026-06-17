@@ -10,6 +10,22 @@ describe("readtime", () => {
     expect(result?.englishWords).toBe(0);
   });
 
+  it("counts Chinese text as CJK characters", () => {
+    const result = readtime("这是中文文章。");
+
+    expect(result).toBeDefined();
+    expect(result?.cjkChars).toBe(6);
+    expect(result?.englishWords).toBe(0);
+  });
+
+  it("counts Korean text as CJK characters", () => {
+    const result = readtime("이것은 한국어 기사입니다.");
+
+    expect(result).toBeDefined();
+    expect(result?.cjkChars).toBe(11);
+    expect(result?.englishWords).toBe(0);
+  });
+
   it("counts English text as English words", () => {
     const result = readtime("This package counts English words and numbers like 123.");
 

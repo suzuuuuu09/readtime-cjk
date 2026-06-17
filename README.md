@@ -1,12 +1,12 @@
 # readtime-cjk
 
-`readtime-cjk` is a small TypeScript library for estimating reading time from Markdown content with better support for CJK text, especially Japanese. It is designed for Markdown and Obsidian-style blog posts where plain word-count based estimators are often inaccurate.
+`readtime-cjk` is a small TypeScript library for estimating reading time from Markdown content with better support for CJK text, including Japanese, Chinese, and Korean. It is designed for Markdown and Obsidian-style blog posts where plain word-count based estimators are often inaccurate.
 
 - [日本語版](./README.ja.md)
 
 ## Features
 
-- Counts CJK characters separately from English words
+- Counts CJK characters, including Japanese, Chinese, and Korean, separately from English words
 - Counts fenced code blocks by non-empty lines
 - Parses Markdown with `mdast-util-from-markdown`
 - Ignores frontmatter, images, URLs, inline code, and HTML by default
@@ -104,6 +104,8 @@ type ReadtimeResult = {
 - Han
 - Hangul
 
+This means Japanese, Chinese, and Korean text are all included in the same CJK character bucket. The default `cjkCharsPerMinute` value is a shared approximation for CJK content, not a language-specific reading model.
+
 English words are counted separately with this pattern:
 
 ```ts
@@ -147,7 +149,7 @@ For Obsidian wikilinks, the library performs a small pre-processing step:
 - `[[note|label]]` becomes `label`
 - `[[note#section|label]]` becomes `label`
 
-This is intended to work well for Obsidian-style blog posts, but it does not aim to fully parse every Obsidian syntax extension.
+This is intended to work well for Markdown and Obsidian-style blog posts, but it does not aim to fully parse every Obsidian syntax extension.
 
 ## Development
 

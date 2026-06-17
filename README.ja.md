@@ -1,12 +1,12 @@
 # readtime-cjk
 
-`readtime-cjk` は、Markdown コンテンツの読了時間を推定する小さな TypeScript ライブラリです。CJK 文字、特に日本語をより適切に扱えるようにしてあり、Markdown や Obsidian スタイルのブログ記事に向いています。
+`readtime-cjk` は、Markdown コンテンツの読了時間を推定する小さな TypeScript ライブラリです。日本語・中国語・韓国語を含む CJK 文字をより適切に扱えるようにしてあり、Markdown や Obsidian スタイルのブログ記事に向いています。
 
 - [English README](./README.md)
 
 ## 特徴
 
-- CJK 文字数と英単語数を別々に数える
+- 日本語・中国語・韓国語を含む CJK 文字数と英単語数を別々に数える
 - fenced code block を非空行単位で数える
 - `mdast-util-from-markdown` で Markdown を解析する
 - frontmatter、画像、URL、inline code、HTML を既定で無視する
@@ -103,6 +103,8 @@ type ReadtimeResult = {
 - Katakana
 - Han
 - Hangul
+
+つまり、日本語・中国語・韓国語はいずれも同じ CJK 文字数の枠でカウントされます。既定の `cjkCharsPerMinute` は CJK 向けの共通の概算値であり、言語ごとの専用読字モデルではありません。
 
 英単語は次の正規表現で別に数えます。
 
